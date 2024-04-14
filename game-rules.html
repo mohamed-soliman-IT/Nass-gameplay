@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nass Gameplay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      overflow: hidden;
+    }
+
+    @font-face {
+      font-family: 'gag';
+      src: url(gagalin/Gagalin-Regular.otf);
+    }
+
+
+    .top-left-div {
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      z-index: 999;
+      /* Ensure it's on top of other elements */
+    }
+
+    .top-right-div{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+
+
+    .bottom-left-div {
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      z-index: 999;
+      /* Ensure it's on top of other elements */
+    }
+
+
+    .bottom-left-div .buzz{
+      margin-bottom: 60px;
+    }
+
+
+
+    .data {
+      position: absolute;
+      right: 50%;
+      left: 12%;
+      z-index: 999;
+
+    }
+
+
+
+    .content .title h1 {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      text-align: center;
+      text-wrap: nowrap;
+      margin-top: 40px;
+      font-family: 'gag';
+      letter-spacing: 2px;
+      font-weight: 400;
+      font-style: normal;
+      text-transform: uppercase;
+      font-style: italic;
+      font-size: 95px;
+      color: green;
+    }
+
+
+
+    .grid .num {
+      text-align: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      padding: 5px;
+      border: 2px solid black;
+      background-color: rgb(231, 161, 11);
+      font-family: 'gag';
+      font-style: italic;
+    }
+
+    .grid .num h2 {
+      font-style: italic;
+      color: #000;
+    }
+
+    .grid .question {
+      padding-left: 75px;
+      position: absolute;
+      text-decoration: underline;
+      top: 215px;
+      font-size: 45px;
+      font-weight: bold;
+      font-family: 'gag';
+    }
+
+
+
+    .choose {
+      border: 3px solid rgb(219, 219, 35);
+      width: 35em;
+      background: transparent;
+      margin-left: 75px;
+      margin-top: 30px;
+      text-align: center;
+      border-radius: 17.5em;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-top: 5px;
+      padding-bottom: 0;
+
+    }
+
+    .choose p {
+      font-size: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+    }
+
+
+
+    .next {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 55px;
+      border: 5px solid rgb(219, 219, 35);
+      width: 10em;
+      color: aliceblue;
+      font-family: 'gag';
+      letter-spacing: 2px;
+      font-weight: 900;
+      margin-left: 455px;
+      background-color: green;
+      margin-top: 60px;
+      text-align: center;
+      border-radius: 17.5em;
+      padding-left: 5px;
+      transition: 1.5s;
+      font-size: 30px;
+    }
+
+    .next:hover {
+      border: 5px solid green;
+      background-color: rgb(219, 219, 35);
+
+    }
+
+
+
+    .counter {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+      border: 3px rgb(151, 151, 59) solid;
+      margin: 100px;
+      padding: 10px;
+      align-items: center;
+
+    }
+
+    .counter p {
+      text-align: center;
+      font-size: 35px;
+      padding-top: 30%;
+    }
+
+    .counter img {
+      position: absolute;
+
+    }
+
+    .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+  align-items: center; /* horizontally center */
+  height: 100vh; /* set height to 100% of viewport height */
+}
+
+
+
+
+    .popup-container {
+      align-items: center;
+      display: none;
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 500px;
+      padding: 20px;
+      text-align: center;
+      background-color: transparent;
+      /* border: 2px solid rgb(255, 0, 0); */
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .popup-container h2 {
+      color: red;
+      margin-bottom: 10px;
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      letter-spacing: 3px;
+      font-weight: 900;
+    }
+
+    .popup-container img {
+      width: 680px;
+      height: 550px;
+    }
+
+
+    .popup-container p {
+     color: aliceblue;
+    }
+
+
+
+    .rules {
+      position: absolute;
+      top: 33%;
+      left: 80px;
+    }
+
+    .rules p{
+      margin-left: 110px;
+      font-size: 45px;
+      margin-right: 50px;
+      font-family: 'gag';
+    }
+
+    .rules h3{
+      padding-top: 23px;
+      margin-left: 195px;
+      font-size: 38px;
+      font-weight: 600;
+      word-wrap: break-word;
+    }
+
+  </style>
+
+</head>
+
+<body align="center">
+
+  <div class="top-left-div">
+    <div class="map-2024">
+      <img width="100%" height="160" class="mb-2" src="imgs/NASS-Academy.png" alt="">
+    </div>
+  </div>
+
+  <div class="top-right-div">
+    <img src="imgs/stroke.png" alt="">
+
+
+
+  </div>
+
+  <div class="top-right-div">
+
+  <img class="buzz" src="imgs/buzzel.png" alt="">
+</div>
+
+
+
+  <div class="fullcontent">
+
+
+
+  
+  
+    <div class="data">
+  
+      <div class="content">
+        <div class="title">
+          <h1>Get to know us.</h1>
+  
+        </div>
+      </div>
+  
+      <div class="grid">
+        <div class="question">
+          <p>About The Game:</p>    
+        </div>
+      </div>
+
+
+      <!-- <div class="description">
+        <div class="content-des">
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum dicta pariatur est veritatis exercitationem aperiam quos ipsum, qui sunt consequuntur laudantium quae nisi id corrupti. Ea non suscipit qui cumque!</p>
+        </div>
+  
+        <div class="des-center">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem atque modi architecto porro impedit itaque repellat amet, at consequatur cumque nihil soluta excepturi maxime voluptate officia doloribus enim nisi recusandae.
+        </div>
+    
+    
+    
+    
+        <button class="next">Let's Go!</button>
+      </div> -->
+
+  
+    </div>
+
+
+    <div class="rules">
+
+
+      <p>Start the ultimate adventure to claim your prize from NASS Academy! Conquer each of our six thrilling levels to unlock an exclusive voucher. Are you ready to journey through the challenges and emerge victorious? Let the excitement begin!</p>
+      <h3>- You have to get the right answers to win. </h3>
+      <h3>- Hit the 'let's go!' button for sneak peek at the Academy before you pick your answer!</h3>
+
+      
+    </div>
+  
+
+
+
+    <button class="next" onclick="window.location.href='index-1.html'">Start</button>
+
+
+
+
+
+
+
+    <div class="bottom-left-div">
+  
+      <div class="map-2024">
+        <img width="100%" class="mb-2" src="imgs/corner11.png" alt="">
+      </div>
+  
+    </div>
+
+    <div class="bottom-left-div">
+      <img class="buzz" src="imgs/buzzel.png" alt="">
+
+    
+    </div>
+
+  
+
+
+  </div>
+
+        <!-- Popup container for time's up message -->
+        <div class="popup-container" id="popup">
+  
+  
+          <img src="imgs/timeup.png"  alt="Wrong Icon">
+          <h2>Time's Up!</h2>
+          <p>Sorry, your time is up.</p>
+        </div>
+
+
+
+
+
+        
+        
+        
+        
+        
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
